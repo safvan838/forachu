@@ -1,0 +1,1344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday My Love | 15.10.2026</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Canvas Confetti CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Caveat:wght@600;700&family=Dancing+Script:wght@600;700&family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400;1,600&family=Shrikhand&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind Configuration Script -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            romantic: ['"Dancing Script"', 'cursive'],
+            letter: ['"Alex Brush"', 'cursive'],
+            handwritten: ['"Caveat"', 'cursive'],
+            serif: ['"Playfair Display"', 'serif'],
+            sans: ['"Outfit"', 'sans-serif'],
+            fun: ['"Shrikhand"', 'cursive'],
+            mono: ['"Space Mono"', 'monospace'],
+          },
+          colors: {
+            blush: {
+              50: '#fff5f7',
+              100: '#ffe6eb',
+              200: '#fecdd7',
+              300: '#fda4ba',
+              400: '#fb7198',
+              500: '#f43f76',
+              600: '#e11d59',
+              900: '#4c0519',
+            },
+            parchment: '#fef7e7',
+            plum: '#2d091a',
+            vinyl: '#121216',
+          },
+          animation: {
+            'float-slow': 'floatGentle 6s ease-in-out infinite',
+            'pulse-soft': 'pulseGlow 2.5s infinite',
+            'wax-pulse': 'waxPulse 2s infinite',
+            'kiss-bounce': 'kissBounce 1.8s infinite',
+            'spin-slow': 'spin 12s linear infinite',
+            'glow-star': 'starGlow 2s ease-in-out infinite alternate',
+          },
+          keyframes: {
+            floatGentle: {
+              '0%, 100%': { transform: 'translateY(0px) rotate(0deg)' },
+              '50%': { transform: 'translateY(-10px) rotate(1deg)' },
+            },
+            pulseGlow: {
+              '0%, 100%': { boxShadow: '0 0 15px rgba(244, 63, 118, 0.35)' },
+              '50%': { boxShadow: '0 0 35px rgba(244, 63, 118, 0.75)' },
+            },
+            waxPulse: {
+              '0%, 100%': { transform: 'scale(1)' },
+              '50%': { transform: 'scale(1.06)' },
+            },
+            kissBounce: {
+              '0%, 100%': { transform: 'scale(1) rotate(0deg)' },
+              '50%': { transform: 'scale(1.08) rotate(-2deg)' }
+            },
+            starGlow: {
+              '0%': { filter: 'drop-shadow(0 0 4px #fbbf24)' },
+              '100%': { filter: 'drop-shadow(0 0 16px #f59e0b)' }
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- External Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="relative text-stone-800 selection:bg-pink-300 selection:text-pink-900 min-h-screen flex flex-col justify-between">
+  <div class="fairy-glow"></div>
+  <canvas id="ambientCanvas" class="fixed inset-0 pointer-events-none z-0"></canvas>
+
+  <!-- ================= TOP HEADER NAVIGATION ================= -->
+  <header class="relative z-30 w-full max-w-6xl mx-auto px-4 pt-4 pb-2 flex flex-col md:flex-row items-center justify-between gap-3">
+    <!-- Active Scene Pill -->
+    <div class="flex items-center space-x-2 bg-white/80 backdrop-blur-md px-4 py-1.5 rounded-full border border-white/80 shadow-sm">
+      <span class="inline-block w-2.5 h-2.5 rounded-full bg-pink-500 animate-ping"></span>
+      <span id="navSceneLabel" class="text-xs sm:text-sm font-semibold tracking-wide text-pink-900">
+        October 15, 2026 Celebration
+      </span>
+    </div>
+
+    <!-- 14-Step Dot Navigator & Audio/Phone Controls -->
+    <div class="flex items-center space-x-2 sm:space-x-3 overflow-x-auto py-1 max-w-full no-scrollbar">
+      <div id="dotContainer" class="flex items-center space-x-1.5 bg-white/70 backdrop-blur-md px-3 py-1.5 rounded-full border border-pink-200">
+        <!-- 14 interactive dot triggers -->
+        <button onclick="goToScene(1)" id="dot-1" class="w-3 h-3 rounded-full bg-pink-600 transition" title="1. Intro Seal"></button>
+        <button onclick="goToScene(2)" id="dot-2" class="w-2.5 h-2.5 rounded-full bg-pink-200 hover:bg-pink-400 transition" title="2. 4 Blue Pens"></button>
+        <button onclick="goToScene(3)" id="dot-3" class="w-2.5 h-2.5 rounded-full bg-pink-200 hover:bg-pink-400 transition" title="3. Scrapbook"></button>
+        <button onclick="goToScene(4)" id="dot-4" class="w-2.5 h-2.5 rounded-full bg-pink-200 hover:bg-pink-400 transition" title="4. Photo Wall"></button>
+        <button onclick="goToScene(5)" id="dot-5" class="w-2.5 h-2.5 rounded-full bg-pink-200 hover:bg-pink-400 transition" title="5. Love Letter"></button>
+        <button onclick="goToScene(6)" id="dot-6" class="w-2.5 h-2.5 rounded-full bg-pink-200 hover:bg-pink-400 transition" title="6. Mwhhhh Quote"></button>
+        <button onclick="goToScene(7)" id="dot-7" class="w-2.5 h-2.5 rounded-full bg-pink-200 hover:bg-pink-400 transition" title="7. Open When..."></button>
+        <button onclick="goToScene(8)" id="dot-8" class="w-2.5 h-2.5 rounded-full bg-pink-200 hover:bg-pink-400 transition" title="8. Glowing Star Jar"></button>
+        <button onclick="goToScene(9)" id="dot-9" class="w-2.5 h-2.5 rounded-full bg-pink-200 hover:bg-pink-400 transition" title="9. Bucket List"></button>
+        <button onclick="goToScene(10)" id="dot-10" class="w-2.5 h-2.5 rounded-full bg-pink-200 hover:bg-pink-400 transition" title="10. Retro Vinyl"></button>
+        <button onclick="goToScene(11)" id="dot-11" class="w-2.5 h-2.5 rounded-full bg-pink-200 hover:bg-pink-400 transition" title="11. Coupons"></button>
+        <button onclick="goToScene(12)" id="dot-12" class="w-2.5 h-2.5 rounded-full bg-pink-200 hover:bg-pink-400 transition" title="12. Cake & Candle"></button>
+        <button onclick="goToScene(13)" id="dot-13" class="w-2.5 h-2.5 rounded-full bg-pink-200 hover:bg-pink-400 transition" title="13. Love Quiz"></button>
+        <button onclick="goToScene(14)" id="dot-14" class="w-2.5 h-2.5 rounded-full bg-pink-200 hover:bg-pink-400 transition" title="14. WhatsApp Sender"></button>
+      </div>
+
+      <!-- Quick Audio Melodic Toggle -->
+      <button onclick="toggleRomanticMusic()" id="audioToggleBtn" class="flex items-center space-x-1.5 bg-white/80 hover:bg-pink-50 text-pink-700 px-3 py-1.5 rounded-full text-xs font-medium border border-pink-200 transition shadow-sm cursor-pointer whitespace-nowrap">
+        <span id="soundIcon">🎵</span>
+        <span class="hidden lg:inline" id="soundLabel">Melody</span>
+      </button>
+
+      <!-- Target WhatsApp Setting -->
+      <button onclick="openPhoneModal()" class="flex items-center space-x-1 bg-white/80 hover:bg-emerald-50 text-emerald-800 px-3 py-1.5 rounded-full text-xs font-medium border border-emerald-200 transition shadow-sm cursor-pointer whitespace-nowrap">
+        <span>📱</span>
+        <span class="hidden sm:inline">WhatsApp #</span>
+      </button>
+    </div>
+  </header>
+
+  <main class="relative z-20 flex-1 max-w-5xl w-full mx-auto px-4 py-3 sm:py-5 flex flex-col justify-center">
+
+    <!-- ================= SCENE 1: WAX SEAL INTRO ================= -->
+    <section id="scene-1" class="scene-fade-in w-full text-center">
+      <div class="glass-box rounded-3xl p-6 sm:p-11 max-w-xl mx-auto shadow-2xl relative overflow-hidden">
+        
+        <div class="inline-flex items-center space-x-2 bg-pink-100/90 text-pink-700 text-xs font-semibold px-4 py-1.5 rounded-full mb-6 uppercase tracking-wider">
+          <span>✨</span>
+          <span>A Birthday Journey for my birthday girl • 15.10.2026</span>
+        </div>
+
+        <h1 class="font-serif text-3xl sm:text-5xl text-plum mb-2 font-bold leading-tight">
+          For My Achummmmaa <br>
+          <span class="font-romantic text-4xl sm:text-6xl text-pink-600 block mt-1"> This is made only for you</span>
+        </h1>
+
+        <p class="text-stone-600 text-xs sm:text-base max-w-md mx-auto mb-7 font-light leading-relaxed">
+          Heyyyhhhh My dear kujji bharyeee shooo innnippooo 15th annnallooo llle shooo ninakkk 18 avanalllolle shyyy agannnne neeeyummm muthukkki and pouriii {I mean adult citizen} ayiiii ennnannne vere onnnummm thettti tharikkkallle shooo pavmmm pension okkke kittanayille ammmummme🙈😁</p>
+
+        <!-- Interactive Wax Seal -->
+        <div class="relative py-3 flex flex-col items-center justify-center">
+          <div class="relative cursor-pointer group" onclick="unlockSurprise()">
+            <div class="absolute inset-0 bg-pink-400 rounded-full blur-xl opacity-40 group-hover:opacity-75 transition duration-500 animate-pulse-soft"></div>
+            
+            <div id="waxSeal" class="relative w-28 h-28 sm:w-32 sm:h-32 bg-gradient-to-tr from-rose-700 via-pink-600 to-rose-500 rounded-full shadow-2xl flex flex-col items-center justify-center border-4 border-amber-200/60 transform group-hover:scale-105 transition-all duration-300 animate-wax-pulse">
+              <span class="text-3xl sm:text-4xl filter drop-shadow">💌</span>
+              <span class="text-[10px] font-bold text-amber-100 uppercase tracking-widest mt-1">TAP TO UNSEAL</span>
+            </div>
+          </div>
+          <p class="text-xs text-pink-800/80 mt-4 font-medium italic">Break the royal seal to open your universe ✨</p>
+        </div>
+
+        <!-- Dynamic Countdown to Oct 15, 2026 -->
+        <div class="mt-7 pt-5 border-t border-pink-200/70 grid grid-cols-4 gap-2 text-stone-700">
+          <div class="bg-white/80 p-2 sm:p-3 rounded-2xl border border-pink-100">
+            <span id="introDays" class="block font-bold text-lg sm:text-2xl text-pink-600">00</span>
+            <span class="text-[10px] uppercase font-semibold text-stone-400">Days</span>
+          </div>
+          <div class="bg-white/80 p-2 sm:p-3 rounded-2xl border border-pink-100">
+            <span id="introHours" class="block font-bold text-lg sm:text-2xl text-pink-600">00</span>
+            <span class="text-[10px] uppercase font-semibold text-stone-400">Hours</span>
+          </div>
+          <div class="bg-white/80 p-2 sm:p-3 rounded-2xl border border-pink-100">
+            <span id="introMinutes" class="block font-bold text-lg sm:text-2xl text-pink-600">00</span>
+            <span class="text-[10px] uppercase font-semibold text-stone-400">Mins</span>
+          </div>
+          <div class="bg-white/80 p-2 sm:p-3 rounded-2xl border border-pink-100">
+            <span id="introSeconds" class="block font-bold text-lg sm:text-2xl text-pink-600">00</span>
+            <span class="text-[10px] uppercase font-semibold text-stone-400">Secs</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================= SCENE 2: 4 SECRET BLUE & WHITE PENS ================= -->
+    <section id="scene-2" class="scene-fade-in hidden w-full">
+      <div class="glass-box rounded-3xl p-5 sm:p-8 shadow-2xl relative overflow-hidden">
+        
+        <div class="text-center max-w-xl mx-auto mb-5">
+          <span class="text-xs font-bold uppercase tracking-widest text-blue-700 bg-blue-100 px-3.5 py-1 rounded-full border border-blue-200">
+            Scene 2 • The 4 Secret Pen Scrolls 🖋️
+          </span>
+          <h2 class="font-serif text-2xl sm:text-4xl text-plum font-bold mt-2">
+            Our most Favorite Memmory 
+          </h2>
+          <p class="text-xs sm:text-sm text-stone-600 mt-1">
+            Edoooooo Nammll Thammill Ethrokkke Memmory Indekkilummmm Eee Pen Thanna Memmories Ath oru vere thannne feel annalle😻, So 4 matching striped pens laid out in our desk pouch. Tap <strong>any pen</strong> to pop off its cap, slide open its secret barrel chamber, and unfold the hidden chits!
+          </p>
+        </div>
+
+        <!-- Desk Tray with 4 Pens -->
+        <div class="relative bg-gradient-to-br from-blue-50/70 via-pink-50/40 to-slate-50/80 rounded-3xl border-2 border-blue-200/80 p-4 sm:p-7 shadow-inner mb-6">
+          <div class="flex items-center justify-between mb-4 px-2">
+            <span class="text-xs font-mono font-bold text-blue-900 bg-white/80 px-3 py-1 rounded-full border border-blue-200">
+              Stationery Desk Tray • 4 Pens
+            </span>
+            <button onclick="openAddNoteModal()" class="text-xs bg-blue-600 hover:bg-blue-700 text-white px-3.5 py-1.5 rounded-full font-semibold shadow-sm transition flex items-center space-x-1 cursor-pointer">
+              <span>➕</span>
+              <span>Tuck Note Into Pen</span>
+            </button>
+          </div>
+
+          <!-- 4 Pens Grid -->
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 justify-items-center items-start">
+            
+            <!-- Pen 1 -->
+            <div id="pen-unit-1" class="pen-unit flex flex-col items-center w-full max-w-[170px]" onclick="toggleSpecificPen(1)">
+              <div class="text-center mb-2">
+                <span class="text-[11px] font-bold text-blue-900 bg-blue-100/90 px-2.5 py-0.5 rounded-full block">Pen #1</span>
+                <span class="text-[10px] text-stone-600 font-medium line-clamp-1">Words for Your Heart</span>
+              </div>
+              <div class="cursor-pointer relative flex flex-col items-center select-none group">
+                <div class="classic-blue-cap w-8 sm:w-10 h-20 sm:h-24 rounded-t-xl relative flex flex-col items-center pt-2 border-b-2 border-blue-900 z-20">
+                  <div class="cap-clip absolute -right-3 top-2 w-2.5 sm:w-3 h-14 sm:h-18 rounded-r-md border border-blue-300/40"></div>
+                  <div class="w-4 h-1 bg-blue-300/40 rounded-full mb-1"></div>
+                  <div class="w-1 h-10 bg-white/20 rounded-full"></div>
+                </div>
+                <div id="pen-chamber-1" class="pen-chamber-container w-full max-h-0 opacity-0 overflow-hidden transition-all duration-500 ease-in-out my-1 z-10">
+                  <div class="pen-chamber rounded-xl p-2 border-2 border-blue-400 flex flex-col items-center">
+                    <span class="text-[9px] text-blue-200 uppercase tracking-widest font-mono">Inside #1</span>
+                    <div id="scrolls-container-1" class="flex flex-col gap-1.5 my-1.5 w-full"></div>
+                    <span class="text-[8px] text-blue-300/80">Tap chit to read 💌</span>
+                  </div>
+                </div>
+                <div class="classic-blue-barrel w-7 sm:w-9 h-36 sm:h-44 rounded-sm relative flex flex-col items-center justify-between py-2 border-x border-blue-900">
+                  <div class="w-full h-1 bg-blue-950/70 border-y border-white/40"></div>
+                  <div class="bg-blue-950/70 px-1 py-0.5 rounded border border-white/30 text-center">
+                    <span class="text-[7px] font-mono text-white font-bold block">15•10•26</span>
+                  </div>
+                  <div class="w-full flex flex-col items-center">
+                    <div class="w-full h-1 bg-blue-950"></div>
+                    <div class="w-5 h-5 pen-tip-cone"></div>
+                    <div class="w-1.5 h-3 ballpoint-nib rounded-b-full"></div>
+                  </div>
+                </div>
+              </div>
+              <button class="mt-2 text-[10px] text-blue-700 underline font-semibold">Tap to Uncap</button>
+             </div>
+
+             <!-- Pen 2 -->
+             <div id="pen-unit-2" class="pen-unit flex flex-col items-center w-full max-w-[170px]" onclick="toggleSpecificPen(2)">
+              <div class="text-center mb-2">
+                <span class="text-[11px] font-bold text-blue-900 bg-blue-100/90 px-2.5 py-0.5 rounded-full block">Pen #2</span>
+                <span class="text-[10px] text-stone-600 font-medium line-clamp-1">Midnight Whispers</span>
+              </div>
+              <div class="cursor-pointer relative flex flex-col items-center select-none group">
+                <div class="classic-blue-cap w-8 sm:w-10 h-20 sm:h-24 rounded-t-xl relative flex flex-col items-center pt-2 border-b-2 border-blue-900 z-20">
+                  <div class="cap-clip absolute -right-3 top-2 w-2.5 sm:w-3 h-14 sm:h-18 rounded-r-md border border-blue-300/40"></div>
+                  <div class="w-4 h-1 bg-blue-300/40 rounded-full mb-1"></div>
+                  <div class="w-1 h-10 bg-white/20 rounded-full"></div>
+                </div>
+                <div id="pen-chamber-2" class="pen-chamber-container w-full max-h-0 opacity-0 overflow-hidden transition-all duration-500 ease-in-out my-1 z-10">
+                  <div class="pen-chamber rounded-xl p-2 border-2 border-blue-400 flex flex-col items-center">
+                    <span class="text-[9px] text-blue-200 uppercase tracking-widest font-mono">Inside #2</span>
+                    <div id="scrolls-container-2" class="flex flex-col gap-1.5 my-1.5 w-full"></div>
+                    <span class="text-[8px] text-blue-300/80">Tap chit to read 💌</span>
+                  </div>
+                </div>
+                <div class="classic-blue-barrel w-7 sm:w-9 h-36 sm:h-44 rounded-sm relative flex flex-col items-center justify-between py-2 border-x border-blue-900">
+                  <div class="w-full h-1 bg-blue-950/70 border-y border-white/40"></div>
+                  <div class="bg-blue-950/70 px-1 py-0.5 rounded border border-white/30 text-center">
+                    <span class="text-[7px] font-mono text-white font-bold block">15•10•26</span>
+                  </div>
+                  <div class="w-full flex flex-col items-center">
+                    <div class="w-full h-1 bg-blue-950"></div>
+                    <div class="w-5 h-5 pen-tip-cone"></div>
+                    <div class="w-1.5 h-3 ballpoint-nib rounded-b-full"></div>
+                  </div>
+                </div>
+              </div>
+              <button class="mt-2 text-[10px] text-blue-700 underline font-semibold">Tap to Uncap</button>
+            </div>
+
+            <!-- Pen 3 -->
+            <div id="pen-unit-3" class="pen-unit flex flex-col items-center w-full max-w-[170px]" onclick="toggleSpecificPen(3)">
+              <div class="text-center mb-2">
+                <span class="text-[11px] font-bold text-blue-900 bg-blue-100/90 px-2.5 py-0.5 rounded-full block">Pen #3</span>
+                <span class="text-[10px] text-stone-600 font-medium line-clamp-1">Promises I'll Keep</span>
+              </div>
+              <div class="cursor-pointer relative flex flex-col items-center select-none group">
+                <div class="classic-blue-cap w-8 sm:w-10 h-20 sm:h-24 rounded-t-xl relative flex flex-col items-center pt-2 border-b-2 border-blue-900 z-20">
+                  <div class="cap-clip absolute -right-3 top-2 w-2.5 sm:w-3 h-14 sm:h-18 rounded-r-md border border-blue-300/40"></div>
+                  <div class="w-4 h-1 bg-blue-300/40 rounded-full mb-1"></div>
+                  <div class="w-1 h-10 bg-white/20 rounded-full"></div>
+                </div>
+                <div id="pen-chamber-3" class="pen-chamber-container w-full max-h-0 opacity-0 overflow-hidden transition-all duration-500 ease-in-out my-1 z-10">
+                  <div class="pen-chamber rounded-xl p-2 border-2 border-blue-400 flex flex-col items-center">
+                    <span class="text-[9px] text-blue-200 uppercase tracking-widest font-mono">Inside #3</span>
+                    <div id="scrolls-container-3" class="flex flex-col gap-1.5 my-1.5 w-full"></div>
+                    <span class="text-[8px] text-blue-300/80">Tap chit to read 💌</span>
+                  </div>
+                </div>
+                <div class="classic-blue-barrel w-7 sm:w-9 h-36 sm:h-44 rounded-sm relative flex flex-col items-center justify-between py-2 border-x border-blue-900">
+                  <div class="w-full h-1 bg-blue-950/70 border-y border-white/40"></div>
+                  <div class="bg-blue-950/70 px-1 py-0.5 rounded border border-white/30 text-center">
+                    <span class="text-[7px] font-mono text-white font-bold block">15•10•26</span>
+                  </div>
+                  <div class="w-full flex flex-col items-center">
+                    <div class="w-full h-1 bg-blue-950"></div>
+                    <div class="w-5 h-5 pen-tip-cone"></div>
+                    <div class="w-1.5 h-3 ballpoint-nib rounded-b-full"></div>
+                  </div>
+                </div>
+              </div>
+              <button class="mt-2 text-[10px] text-blue-700 underline font-semibold">Tap to Uncap</button>
+            </div>
+
+            <!-- Pen 4 -->
+            <div id="pen-unit-4" class="pen-unit flex flex-col items-center w-full max-w-[170px]" onclick="toggleSpecificPen(4)">
+              <div class="text-center mb-2">
+                <span class="text-[11px] font-bold text-blue-900 bg-blue-100/90 px-2.5 py-0.5 rounded-full block">Pen #4</span>
+                <span class="text-[10px] text-stone-600 font-medium line-clamp-1">Why I Fell For You</span>
+              </div>
+              <div class="cursor-pointer relative flex flex-col items-center select-none group">
+                <div class="classic-blue-cap w-8 sm:w-10 h-20 sm:h-24 rounded-t-xl relative flex flex-col items-center pt-2 border-b-2 border-blue-900 z-20">
+                  <div class="cap-clip absolute -right-3 top-2 w-2.5 sm:w-3 h-14 sm:h-18 rounded-r-md border border-blue-300/40"></div>
+                  <div class="w-4 h-1 bg-blue-300/40 rounded-full mb-1"></div>
+                  <div class="w-1 h-10 bg-white/20 rounded-full"></div>
+                </div>
+                <div id="pen-chamber-4" class="pen-chamber-container w-full max-h-0 opacity-0 overflow-hidden transition-all duration-500 ease-in-out my-1 z-10">
+                  <div class="pen-chamber rounded-xl p-2 border-2 border-blue-400 flex flex-col items-center">
+                    <span class="text-[9px] text-blue-200 uppercase tracking-widest font-mono">Inside #4</span>
+                    <div id="scrolls-container-4" class="flex flex-col gap-1.5 my-1.5 w-full"></div>
+                    <span class="text-[8px] text-blue-300/80">Tap chit to read 💌</span>
+                  </div>
+                </div>
+                <div class="classic-blue-barrel w-7 sm:w-9 h-36 sm:h-44 rounded-sm relative flex flex-col items-center justify-between py-2 border-x border-blue-900">
+                  <div class="w-full h-1 bg-blue-950/70 border-y border-white/40"></div>
+                  <div class="bg-blue-950/70 px-1 py-0.5 rounded border border-white/30 text-center">
+                    <span class="text-[7px] font-mono text-white font-bold block">15•10•26</span>
+                  </div>
+                  <div class="w-full flex flex-col items-center">
+                    <div class="w-full h-1 bg-blue-950"></div>
+                    <div class="w-5 h-5 pen-tip-cone"></div>
+                    <div class="w-1.5 h-3 ballpoint-nib rounded-b-full"></div>
+                  </div>
+                </div>
+              </div>
+              <button class="mt-2 text-[10px] text-blue-700 underline font-semibold">Tap to Uncap</button>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Scroll Letter Modal (Reading an unrolled chit) -->
+        <div id="scrollReaderModal" class="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 hidden">
+          <div class="love-letter-stationery max-w-md w-full rounded-3xl p-6 sm:p-8 shadow-2xl relative border-4 border-amber-300 transform scale-95 transition-transform duration-300">
+            <div class="flex items-center justify-between border-b-2 border-amber-300/60 pb-3 mb-4">
+              <div class="flex items-center space-x-2">
+                <span class="text-2xl">📝</span>
+                <div>
+                  <span id="readerPenOrigin" class="text-[10px] uppercase font-bold text-blue-900 tracking-widest block">Note from Pen #1</span>
+                  <h4 id="readerScrollTitle" class="font-serif text-lg font-bold text-amber-950">Letter Note</h4>
+                </div>
+              </div>
+              <button onclick="closeScrollReader()" class="text-amber-800 hover:text-amber-950 text-xl font-bold bg-amber-200/60 w-8 h-8 rounded-full flex items-center justify-center cursor-pointer">
+                ✕
+              </button>
+            </div>
+
+            <div class="my-4 min-h-[120px] flex items-center justify-center">
+              <p id="readerScrollContent" class="font-handwritten text-2xl sm:text-3xl text-stone-800 leading-relaxed text-center px-2">
+                "Content goes here"
+              </p>
+            </div>
+
+            <div class="pt-4 border-t-2 border-amber-300/60 flex items-center justify-between text-xs text-amber-900">
+              <span class="font-mono text-[10px] text-blue-900">Written with blue ink • 15.10.2026</span>
+              <button onclick="closeScrollReader()" class="bg-blue-900 text-white px-4 py-1.5 rounded-full font-semibold hover:bg-blue-800 transition cursor-pointer">
+                Fold Back & Hide 💌
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Add Custom Note Modal -->
+        <div id="addNoteModal" class="fixed inset-0 z-50 bg-black/40 backdrop-blur-sm flex items-center justify-center p-4 hidden">
+          <div class="glass-box rounded-3xl p-6 max-w-sm w-full shadow-2xl border border-blue-200">
+            <h3 class="font-serif text-lg font-bold text-plum mb-1">Add A Secret Folded Chit</h3>
+            <p class="text-xs text-stone-600 mb-3">Choose which pen barrel you want to slip this handwritten chit into:</p>
+            
+            <label class="text-[11px] font-semibold text-stone-600 block mb-1">Select Pen:</label>
+            <select id="newScrollPenSelect" class="w-full text-xs p-2.5 rounded-xl bg-white border border-blue-200 mb-3 focus:ring-2 focus:ring-blue-400 focus:outline-none">
+              <option value="1">Pen #1 - Words for Your Heart</option>
+              <option value="2">Pen #2 - Midnight Whispers</option>
+              <option value="3">Pen #3 - Promises I'll Keep</option>
+              <option value="4">Pen #4 - Why I Fell For You</option>
+            </select>
+
+            <input type="text" id="newScrollTitle" placeholder="Chit Title (e.g. My Favorite Habit Of Yours)" class="w-full text-xs p-3 rounded-xl bg-white border border-blue-200 mb-2 focus:ring-2 focus:ring-blue-400 focus:outline-none">
+            <textarea id="newScrollText" rows="3" placeholder="Write your secret handwritten message..." class="w-full text-xs p-3 rounded-xl bg-white border border-blue-200 mb-4 focus:ring-2 focus:ring-blue-400 focus:outline-none"></textarea>
+            
+            <div class="flex justify-end space-x-2">
+              <button onclick="closeAddNoteModal()" class="px-4 py-2 text-xs font-semibold text-stone-600 hover:bg-blue-100 rounded-xl transition">
+                Cancel
+              </button>
+              <button onclick="saveNewScroll()" class="px-5 py-2 text-xs font-semibold bg-gradient-to-r from-blue-600 to-indigo-700 text-white rounded-xl shadow-md transition">
+                Slip Inside Pen ✨
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Scene Footer Navigation -->
+        <div class="flex items-center justify-between pt-6 border-t border-pink-100 mt-2">
+          <button onclick="goToScene(1)" class="px-5 py-2.5 rounded-2xl bg-white/70 hover:bg-white text-stone-600 text-xs font-semibold border border-pink-200 transition cursor-pointer">
+            ← Intro Seal
+          </button>
+          <button onclick="goToScene(3)" class="px-7 py-2.5 rounded-2xl bg-gradient-to-r from-pink-500 to-rose-600 text-white text-xs font-semibold shadow-md hover:from-pink-600 hover:to-rose-700 transition cursor-pointer">
+            Scrapbook 📸 →
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================= SCENE 3: MEMORY SCRAPBOOK ================= -->
+    <section id="scene-3" class="scene-fade-in hidden w-full">
+      <div class="glass-box rounded-3xl p-5 sm:p-8 shadow-2xl">
+        <div class="text-center max-w-xl mx-auto mb-6">
+          <span class="text-xs font-bold uppercase tracking-widest text-pink-600 bg-pink-100 px-3 py-1 rounded-full">
+            Scene 3 • Memory Scrapbook
+          </span>
+          <h2 class="font-serif text-2xl sm:text-4xl text-plum font-bold mt-2">Our Sweet Scrapbook 📸</h2>
+          <p class="text-xs sm:text-sm text-stone-600 mt-1">
+            Tap any polaroid to flip its note, or tap the camera icon to upload our couple memories!
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 pt-3 pb-4">
+          <!-- Polaroid 1 -->
+          <div class="relative bg-white p-3 pb-4 shadow-lg rounded-2xl rotate-[-2deg] cursor-pointer" onclick="flipPolaroid(1)">
+            <div class="relative aspect-[4/5] bg-stone-100 rounded-xl overflow-hidden group">
+              <img id="polaroidImg1" src="./1.jpeg" alt="Memory 1" class="w-full h-full object-cover transition duration-500 group-hover:scale-105">
+              
+              <div id="polaroidNote1" class="absolute inset-0 bg-pink-900/90 text-white p-4 flex flex-col justify-center text-center opacity-0 transition-opacity duration-300">
+                <span class="text-2xl mb-1">☕</span>
+                <p class="font-romantic text-2xl text-pink-200">Our firt meet</p>
+                <p class="text-xs text-pink-100 mt-1">"The moment I looked at you and knew I never wanted to look away."</p>
+                <span class="text-[10px] text-pink-300 mt-2 font-mono">15.10.2026 Forever</span>
+              </div>
+
+              <label onclick="event.stopPropagation()" class="absolute bottom-2 right-2 bg-white/90 hover:bg-white text-stone-800 p-2 rounded-full cursor-pointer shadow-md text-xs border border-pink-200" title="Upload your picture">
+                📷
+                <input type="file" accept="image/*" class="hidden" onchange="uploadMemoryPic(event, 1)">
+              </label>
+            </div>
+            <div class="pt-3 text-center">
+              <p class="font-romantic text-xl text-stone-800">Where our story began...</p>
+              <span class="text-[10px] text-stone-400">Tap to flip • Click 📷 to replace</span>
+            </div>
+          </div>
+
+          <!-- Polaroid 2 -->
+          <div class="relative bg-white p-3 pb-4 shadow-lg rounded-2xl rotate-[2.5deg] cursor-pointer" onclick="flipPolaroid(2)">
+            <div class="relative aspect-[4/5] bg-stone-100 rounded-xl overflow-hidden group">
+              <img id="polaroidImg2" src="./2.jpeg" alt="Memory 2" class="w-full h-full object-cover transition duration-500 group-hover:scale-105">
+              
+              <div id="polaroidNote2" class="absolute inset-0 bg-pink-900/90 text-white p-4 flex flex-col justify-center text-center opacity-0 transition-opacity duration-300">
+                <span class="text-2xl mb-1">🎡</span>
+                <p class="font-romantic text-2xl text-pink-200">Together Snaps</p>
+                <p class="text-xs text-pink-100 mt-1">"Nmmmalll meet cheyyummmbooo ethra pettanna lle tymm ponnneee😩."</p>
+                <span class="text-[10px] text-pink-300 mt-2 font-mono">My Favorite Human</span>
+              </div>
+
+              <label onclick="event.stopPropagation()" class="absolute bottom-2 right-2 bg-white/90 hover:bg-white text-stone-800 p-2 rounded-full cursor-pointer shadow-md text-xs border border-pink-200" title="Upload your picture">
+                📷
+                <input type="file" accept="image/*" class="hidden" onchange="uploadMemoryPic(event, 2)">
+              </label>
+            </div>
+            <div class="pt-3 text-center">
+              <p class="font-romantic text-xl text-stone-800">Endless Laughter</p>
+              <span class="text-[10px] text-stone-400">Tap to flip • Click 📷 to replace</span>
+            </div>
+          </div>
+
+          <!-- Polaroid 3 -->
+          <div class="relative bg-white p-3 pb-4 shadow-lg rounded-2xl rotate-[-1.5deg] cursor-pointer" onclick="flipPolaroid(3)">
+            <div class="relative aspect-[4/5] bg-stone-100 rounded-xl overflow-hidden group">
+              <img id="polaroidImg3" src="./3.jpeg" alt="Memory 3" class="w-full h-full object-cover transition duration-500 group-hover:scale-105">
+              
+              <div id="polaroidNote3" class="absolute inset-0 bg-pink-900/90 text-white p-4 flex flex-col justify-center text-center opacity-0 transition-opacity duration-300">
+                <span class="text-2xl mb-1">🌅</span>
+                <p class="font-romantic text-2xl text-pink-200">Warm Sunsets</p>
+                <p class="text-xs text-pink-100 mt-1">"No matter how breathtaking the view was, I only ever found myself staring right at you."</p>
+                <span class="text-[10px] text-pink-300 mt-2 font-mono">100% Mine</span>
+              </div>
+
+              <label onclick="event.stopPropagation()" class="absolute bottom-2 right-2 bg-white/90 hover:bg-white text-stone-800 p-2 rounded-full cursor-pointer shadow-md text-xs border border-pink-200" title="Upload your picture">
+                📷
+                <input type="file" accept="image/*" class="hidden" onchange="uploadMemoryPic(event, 3)">
+              </label>
+            </div>
+            <div class="pt-3 text-center">
+              <p class="font-romantic text-xl text-stone-800">My Safe & Warm Home</p>
+              <span class="text-[10px] text-stone-400">Tap to flip • Click 📷 to replace</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex items-center justify-between pt-6 border-t border-pink-100 mt-4">
+          <button onclick="goToScene(2)" class="px-5 py-2.5 rounded-2xl bg-white/70 hover:bg-white text-stone-600 text-xs font-semibold border border-pink-200 transition cursor-pointer">
+            ← 4 Blue Pens
+          </button>
+          <button onclick="goToScene(4)" class="px-7 py-2.5 rounded-2xl bg-gradient-to-r from-pink-500 to-rose-600 text-white text-xs font-semibold shadow-md hover:from-pink-600 hover:to-rose-700 transition cursor-pointer">
+            Her Photo Wall 👑 →
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= SCENE 4: DEDICATED PHOTO WALL (MULTI-COLUMN) ================= -->
+    <section id="scene-4" class="scene-fade-in hidden w-full">
+      <div class="glass-box rounded-3xl p-5 sm:p-8 shadow-2xl">
+        <div class="text-center max-w-xl mx-auto mb-6">
+          <span class="text-xs font-bold uppercase tracking-widest text-pink-600 bg-pink-100 px-3 py-1 rounded-full border border-pink-200">
+            Scene 4 • Her Picture Wall 👑
+          </span>
+          <h2 class="font-serif text-2xl sm:text-4xl text-plum font-bold mt-2">
+            The Prettiest Face In My kujji Hrithayam🫀💌
+          </h2>
+          <p class="text-xs sm:text-sm text-stone-600 mt-1">
+            Ntethayyaaa korachhh kujji kujiii creativity i hope ishttakkummm ennn, Bcz everything dependend on a mwhhh nnn aanalloooo😻😽
+          </p>
+        </div>
+
+        <!-- 4-Column Responsive Grid -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-5 pb-4">
+          <!-- Card 1 -->
+          <div class="bg-white rounded-2xl p-2.5 shadow-md border border-pink-100 flex flex-col justify-between hover:-translate-y-1 transition duration-300">
+            <div class="relative aspect-[3/4] bg-pink-50 rounded-xl overflow-hidden group">
+              <img id="wallImg1" src="./4.jpeg" alt="Her Photo 1" class="w-full h-full object-cover">
+              <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
+                <span class="text-white text-xs font-bold bg-pink-600/90 px-3 py-1.5 rounded-full">Prettiest Smile</span>
+              </div>
+            </div>
+            <div class="pt-2 flex items-center justify-between">
+              <span class="text-[11px] font-semibold text-stone-700 truncate">Her Prettiest Smile ✨</span>
+              <label class="bg-pink-100 hover:bg-pink-200 text-pink-700 text-[10px] font-bold px-2 py-1 rounded-md cursor-pointer transition">
+                + Upload
+                <input type="file" accept="image/*" class="hidden" onchange="uploadWallPic(event, 1)">
+              </label>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="bg-white rounded-2xl p-2.5 shadow-md border border-pink-100 flex flex-col justify-between hover:-translate-y-1 transition duration-300">
+            <div class="relative aspect-[3/4] bg-pink-50 rounded-xl overflow-hidden group">
+              <img id="wallImg2" src="./5.jpeg" alt="Her Photo 2" class="w-full h-full object-cover">
+              <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
+                <span class="text-white text-xs font-bold bg-pink-600/90 px-3 py-1.5 rounded-full">Cutest Eyes</span>
+              </div>
+            </div>
+            <div class="pt-2 flex items-center justify-between">
+              <span class="text-[11px] font-semibold text-stone-700 truncate">Cute Candid 🙈</span>
+              <label class="bg-pink-100 hover:bg-pink-200 text-pink-700 text-[10px] font-bold px-2 py-1 rounded-md cursor-pointer transition">
+                + Upload
+                <input type="file" accept="image/*" class="hidden" onchange="uploadWallPic(event, 2)">
+              </label>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="bg-white rounded-2xl p-2.5 shadow-md border border-pink-100 flex flex-col justify-between hover:-translate-y-1 transition duration-300">
+            <div class="relative aspect-[3/4] bg-pink-50 rounded-xl overflow-hidden group">
+              <img id="wallImg3" src="./6.jpeg" alt="Her Photo 3" class="w-full h-full object-cover">
+              <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
+                <span class="text-white text-xs font-bold bg-pink-600/90 px-3 py-1.5 rounded-full">Mine Maalaakha👼🪄</span>
+              </div>
+            </div>
+            <div class="pt-2 flex items-center justify-between">
+              <span class="text-[11px] font-semibold text-stone-700 truncate">Mine Maalaakha👼🪄</span>
+              <label class="bg-pink-100 hover:bg-pink-200 text-pink-700 text-[10px] font-bold px-2 py-1 rounded-md cursor-pointer transition">
+                + Upload
+                <input type="file" accept="image/*" class="hidden" onchange="uploadWallPic(event, 3)">
+              </label>
+            </div>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="bg-white rounded-2xl p-2.5 shadow-md border border-pink-100 flex flex-col justify-between hover:-translate-y-1 transition duration-300">
+            <div class="relative aspect-[3/4] bg-pink-50 rounded-xl overflow-hidden group">
+              <img id="wallImg4" src="./7.jpeg" alt="Her Photo 4" class="w-full h-full object-cover">
+              <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
+                <span class="text-white text-xs font-bold bg-pink-600/90 px-3 py-1.5 rounded-full">Kujji pavammmm🤭🙈</span>
+              </div>
+            </div>
+            <div class="pt-2 flex items-center justify-between">
+              <span class="text-[11px] font-semibold text-stone-700 truncate">Kujji pavammmm🤭🙈</span>
+              <label class="bg-pink-100 hover:bg-pink-200 text-pink-700 text-[10px] font-bold px-2 py-1 rounded-md cursor-pointer transition">
+                + Upload
+                <input type="file" accept="image/*" class="hidden" onchange="uploadWallPic(event, 4)">
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex items-center justify-between pt-6 border-t border-pink-100 mt-4">
+          <button onclick="goToScene(3)" class="px-5 py-2.5 rounded-2xl bg-white/70 hover:bg-white text-stone-600 text-xs font-semibold border border-pink-200 transition cursor-pointer">
+            ← Scrapbook
+          </button>
+          <button onclick="goToScene(5)" class="px-7 py-2.5 rounded-2xl bg-gradient-to-r from-pink-500 to-rose-600 text-white text-xs font-semibold shadow-md hover:from-pink-600 hover:to-rose-700 transition cursor-pointer">
+            Love Letter 📜 →
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= SCENE 5: DEDICATED HANDWRITTEN LOVE LETTER ================= -->
+    <section id="scene-5" class="scene-fade-in hidden w-full">
+      <div class="glass-box rounded-3xl p-5 sm:p-9 shadow-2xl relative overflow-hidden">
+        
+        <div class="flex flex-col sm:flex-row items-center justify-between border-b border-pink-100 pb-3 mb-5 gap-3">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-widest text-amber-800 bg-amber-100 px-3.5 py-1 rounded-full border border-amber-200">
+              Scene 5 • Dedicated Love Letter 💌
+            </span>
+            <h2 class="font-serif text-2xl sm:text-3xl text-plum font-bold mt-1">Nte priyathamakkkkk nite chimbanzee ezhuthunnathhh🥹💌</h2>
+          </div>
+          <!-- Live Edit Button -->
+          <button onclick="openEditLetterModal()" class="px-4 py-2 rounded-full bg-gradient-to-r from-amber-600 to-rose-600 text-white text-xs font-bold shadow-md hover:from-amber-700 hover:to-rose-700 transition flex items-center space-x-1.5 cursor-pointer">
+            <span>✍️</span>
+            <span>Edit / Personalize Letter</span>
+          </button>
+        </div>
+
+        <!-- Textured Parchment Stationery Sheet -->
+        <div class="love-letter-stationery rounded-3xl p-6 sm:p-12 shadow-xl border-4 border-amber-300/80 relative">
+          
+          <div class="flex items-center justify-between border-b border-amber-400/40 pb-3 mb-6">
+            <span class="font-mono text-xs text-amber-900 tracking-widest uppercase">October 15, 2026 • Private & Sacred</span>
+            <span class="text-xl">🕊️</span>
+          </div>
+
+          <h3 id="letterSalutation" class="font-letter text-3xl sm:text-5xl text-rose-900 mb-4">
+            My Sweetest Girl,
+          </h3>
+
+          <div id="letterBodyContent" class="space-y-4 font-handwritten text-xl sm:text-2xl text-stone-800 leading-relaxed">
+            <p>
+              Happy Birthday, my whole universe. If someone asked me what magic feels like, I would simply say your name. You walked into my life and suddenly the world wasn’t just ordinary days passing by—it became an adventure of laughter, warm smiles, and pure warmth.
+            </p>
+            <p>
+              Your smile has the power to fix my worst days, and your laughter is my absolute favorite sound in existence. In your eyes, I found my calm, my home, and the person I want to love fiercely for every tomorrow we will ever see.
+            </p>
+            <p>
+              Today, on October 15, 2026, I make you this promise: I will always be here to hold your hand, celebrate your wins, wipe away your worries, and remind you every single day how deeply and endlessly you are cherished.
+            </p>
+          </div>
+
+          <div class="mt-8 pt-6 border-t border-amber-400/40 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+            <div>
+              <p class="font-letter text-2xl sm:text-4xl text-rose-900" id="letterSignoff">Forever & always yours,</p>
+              <p class="font-romantic text-2xl sm:text-3xl text-pink-700 font-bold" id="letterSenderName">With all my love & infinite kisses ❤️</p>
+            </div>
+            
+            <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-gradient-to-tr from-rose-800 via-rose-700 to-pink-600 shadow-lg border-2 border-amber-300 flex flex-col items-center justify-center text-amber-100 rotate-[-8deg]">
+              <span class="text-lg sm:text-xl">❤️</span>
+              <span class="text-[8px] font-bold tracking-widest uppercase">SEALED</span>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="flex items-center justify-between pt-6 border-t border-pink-100 mt-5">
+          <button onclick="goToScene(4)" class="px-5 py-2.5 rounded-2xl bg-white/70 hover:bg-white text-stone-600 text-xs font-semibold border border-pink-200 transition cursor-pointer">
+            ← Photo Wall
+          </button>
+          <button onclick="goToScene(6)" class="px-7 py-2.5 rounded-2xl bg-gradient-to-r from-pink-500 to-rose-600 text-white text-xs font-semibold shadow-md hover:from-pink-600 hover:to-rose-700 transition cursor-pointer">
+            Special Quote 💋 →
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================= SCENE 6: MWHHHH QUOTE SCENE ================= -->
+    <section id="scene-6" class="scene-fade-in hidden w-full text-center">
+      <div class="glass-box rounded-3xl p-6 sm:p-12 shadow-2xl relative overflow-hidden max-w-2xl mx-auto">
+        <div class="absolute -top-3 -right-3 text-4xl sm:text-5xl animate-bounce pointer-events-none select-none">
+          💋
+        </div>
+        <div class="absolute -bottom-2 -left-2 text-3xl sm:text-4xl animate-pulse pointer-events-none select-none">
+          🙈
+        </div>
+
+        <span class="text-xs font-bold uppercase tracking-widest text-pink-700 bg-pink-100 px-3.5 py-1 rounded-full border border-pink-200">
+          Scene 6 • The Golden Truth 💖
+        </span>
+
+        <h3 class="font-romantic text-2xl sm:text-3xl text-pink-500 mt-5">
+          In this whole world, no matter what happens...
+        </h3>
+
+        <!-- Requested Big Bold Quote -->
+        <div class="my-6 sm:my-8 px-2 py-4 bg-gradient-to-r from-rose-100/70 via-pink-100/90 to-rose-100/70 rounded-3xl border-2 border-pink-300 shadow-inner relative group cursor-pointer" onclick="triggerMwhhhExplosion()">
+          <h1 class="font-fun text-3xl sm:text-5xl md:text-6xl text-rose-600 leading-tight tracking-wide drop-shadow-sm animate-kiss-bounce">
+            everything depended on mwhhhh🙈💋
+          </h1>
+          <p class="text-xs sm:text-sm font-semibold text-rose-800/80 mt-3 italic">
+            (Tap this box to blast sweet kisses everywhere! 💋💥)
+          </p>
+        </div>
+
+        <p class="text-stone-700 text-sm sm:text-base font-light max-w-md mx-auto leading-relaxed mb-6">
+          Every bad mood, every tough day, every silly fight, and every celebration... one tight hug and one little sweet <em>mwhhhh</em> solves everything in 0.1 seconds, bcz everything depended on a mwhhh🤭🙈!
+        </p>
+
+        <!-- Kiss Blast Counter Button -->
+        <div class="flex items-center justify-center gap-3">
+          <button onclick="triggerMwhhhExplosion()" class="px-6 py-3 rounded-full bg-gradient-to-r from-pink-500 to-rose-600 text-white font-bold text-sm shadow-xl hover:from-pink-600 hover:to-rose-700 transition transform active:scale-95 flex items-center space-x-2 cursor-pointer">
+            <span>Send Mwhhhh 💋</span>
+            <span id="mwhhhCount" class="bg-white text-rose-600 px-2 py-0.5 rounded-full text-xs">0</span>
+          </button>
+        </div>
+
+        <div class="flex items-center justify-between pt-8 border-t border-pink-100 mt-8">
+          <button onclick="goToScene(5)" class="px-5 py-2.5 rounded-2xl bg-white/70 hover:bg-white text-stone-600 text-xs font-semibold border border-pink-200 transition cursor-pointer">
+            ← Love Letter
+          </button>
+          <button onclick="goToScene(7)" class="px-7 py-2.5 rounded-2xl bg-gradient-to-r from-pink-500 to-rose-600 text-white text-xs font-semibold shadow-md hover:from-pink-600 hover:to-rose-700 transition cursor-pointer">
+            "Open When..." 💌 →
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= SCENE 7: "OPEN WHEN..." ENVELOPES ================= -->
+    <section id="scene-7" class="scene-fade-in hidden w-full">
+      <div class="glass-box rounded-3xl p-5 sm:p-9 shadow-2xl relative">
+        <div class="text-center max-w-xl mx-auto mb-6">
+          <span class="text-xs font-bold uppercase tracking-widest text-rose-700 bg-rose-100 px-3.5 py-1 rounded-full border border-rose-200">
+            Scene 7 • Special Keepsakes 💌
+          </span>
+          <h2 class="font-serif text-2xl sm:text-4xl text-plum font-bold mt-2">
+            "Open When..." Envelopes
+          </h2>
+          <p class="text-xs sm:text-sm text-stone-600 mt-1">
+            Nte kujjji pavveeeeeeeeee nthooo creativityyy korachhh koodthalayonnnddd nthokkke cheyyynnnddd ithummm vere oru creativityyy ayii kootikkooo!😻💋
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-4">
+          <!-- Envelope 1 -->
+          <div onclick="openWhenEnvelope(1)" class="bg-gradient-to-br from-rose-50 to-pink-100 p-5 rounded-2xl border-2 border-pink-200/90 shadow-sm hover:shadow-md cursor-pointer transition transform hover:-translate-y-1 relative group">
+            <div class="w-10 h-10 rounded-full bg-rose-500 text-white flex items-center justify-center font-bold text-lg mb-3 shadow">💌</div>
+            <h4 class="font-serif font-bold text-stone-800 text-sm">Open when you miss me</h4>
+            <p class="text-[11px] text-stone-500 mt-1">When distance feels heavy and you need a tight hug.</p>
+            <span class="inline-block mt-3 text-[10px] bg-rose-200/70 text-rose-800 font-bold px-2 py-0.5 rounded-md">Tap to open 🕊️</span>
+          </div>
+
+          <!-- Envelope 2 -->
+          <div onclick="openWhenEnvelope(2)" class="bg-gradient-to-br from-purple-50 to-pink-50 p-5 rounded-2xl border-2 border-purple-200/90 shadow-sm hover:shadow-md cursor-pointer transition transform hover:-translate-y-1 relative group">
+            <div class="w-10 h-10 rounded-full bg-purple-500 text-white flex items-center justify-center font-bold text-lg mb-3 shadow">🛋️</div>
+            <h4 class="font-serif font-bold text-stone-800 text-sm">Open when you've had a tiring day</h4>
+            <p class="text-[11px] text-stone-500 mt-1">When work or life felt exhausting and draining.</p>
+            <span class="inline-block mt-3 text-[10px] bg-purple-200/70 text-purple-800 font-bold px-2 py-0.5 rounded-md">Tap to open 🕊️</span>
+          </div>
+
+          <!-- Envelope 3 -->
+          <div onclick="openWhenEnvelope(3)" class="bg-gradient-to-br from-indigo-50 to-blue-50 p-5 rounded-2xl border-2 border-indigo-200/90 shadow-sm hover:shadow-md cursor-pointer transition transform hover:-translate-y-1 relative group">
+            <div class="w-10 h-10 rounded-full bg-indigo-500 text-white flex items-center justify-center font-bold text-lg mb-3 shadow">🌙</div>
+            <h4 class="font-serif font-bold text-stone-800 text-sm">Open when you can't sleep at 2:00 AM</h4>
+            <p class="text-[11px] text-stone-500 mt-1">When your mind is racing and the night feels quiet.</p>
+            <span class="inline-block mt-3 text-[10px] bg-indigo-200/70 text-indigo-800 font-bold px-2 py-0.5 rounded-md">Tap to open 🕊️</span>
+          </div>
+
+          <!-- Envelope 4 -->
+          <div onclick="openWhenEnvelope(4)" class="bg-gradient-to-br from-amber-50 to-orange-50 p-5 rounded-2xl border-2 border-amber-200/90 shadow-sm hover:shadow-md cursor-pointer transition transform hover:-translate-y-1 relative group">
+            <div class="w-10 h-10 rounded-full bg-amber-500 text-white flex items-center justify-center font-bold text-lg mb-3 shadow">🎂</div>
+            <h4 class="font-serif font-bold text-stone-800 text-sm">Open on your birthday morning (Oct 15)</h4>
+            <p class="text-[11px] text-stone-500 mt-1">To start your 15.10.2026 with a beaming smile.</p>
+            <span class="inline-block mt-3 text-[10px] bg-amber-200/70 text-amber-800 font-bold px-2 py-0.5 rounded-md">Tap to open 🕊️</span>
+          </div>
+
+          <!-- Envelope 5 -->
+          <div onclick="openWhenEnvelope(5)" class="bg-gradient-to-br from-rose-50 to-amber-50 p-5 rounded-2xl border-2 border-rose-300 shadow-sm hover:shadow-md cursor-pointer transition transform hover:-translate-y-1 relative group sm:col-span-2 md:col-span-1">
+            <div class="w-10 h-10 rounded-full bg-rose-600 text-white flex items-center justify-center font-bold text-lg mb-3 shadow">👑</div>
+            <h4 class="font-serif font-bold text-stone-800 text-sm">Open when you need to know how gorgeous you are</h4>
+            <p class="text-[11px] text-stone-500 mt-1">A reminder of just how breathtaking you truly are.</p>
+            <span class="inline-block mt-3 text-[10px] bg-rose-200/70 text-rose-800 font-bold px-2 py-0.5 rounded-md">Tap to open 🕊️</span>
+          </div>
+        </div>
+
+        <div class="flex items-center justify-between pt-6 border-t border-pink-100 mt-5">
+          <button onclick="goToScene(6)" class="px-5 py-2.5 rounded-2xl bg-white/70 hover:bg-white text-stone-600 text-xs font-semibold border border-pink-200 transition cursor-pointer">
+            ← Special Quote
+          </button>
+          <button onclick="goToScene(8)" class="px-7 py-2.5 rounded-2xl bg-gradient-to-r from-pink-500 to-rose-600 text-white text-xs font-semibold shadow-md hover:from-pink-600 hover:to-rose-700 transition cursor-pointer">
+            Glowing Star Jar ⭐ →
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= SCENE 8: GLOWING STAR JAR ================= -->
+    <section id="scene-8" class="scene-fade-in hidden w-full text-center">
+      <div class="glass-box rounded-3xl p-6 sm:p-10 shadow-2xl relative overflow-hidden">
+        <div class="max-w-xl mx-auto mb-6">
+          <span class="text-xs font-bold uppercase tracking-widest text-amber-700 bg-amber-100 px-3.5 py-1 rounded-full border border-amber-200">
+            Scene 8 • Reasons Why I Love You ⭐
+          </span>
+          <h2 class="font-serif text-2xl sm:text-4xl text-plum font-bold mt-2">
+            The Glowing Star Jar
+          </h2>
+          <p class="text-xs sm:text-sm text-stone-600 mt-1">
+            Filled with glowing origami stars and fairy lights. Tap the jar to pull out a floating star and unfold another reason why you mean everything to me!
+          </p>
+        </div>
+
+        <!-- Glass Star Jar -->
+        <div class="relative w-52 sm:w-64 h-64 sm:h-72 mx-auto my-3 cursor-pointer group select-none" onclick="pullStarFromJar()">
+          <div class="absolute inset-0 bg-amber-300/30 rounded-3xl blur-2xl group-hover:bg-amber-300/50 transition"></div>
+          
+          <div class="glass-jar relative w-full h-full rounded-3xl flex flex-col justify-between items-center p-4 border-4 border-white/80 overflow-hidden shadow-2xl">
+            <!-- Cork lid -->
+            <div class="w-32 h-6 bg-gradient-to-r from-amber-800 via-amber-700 to-amber-800 rounded-t-lg shadow-md border-b-2 border-amber-900"></div>
+
+            <!-- Floating stars inside -->
+            <div class="relative flex-1 w-full flex items-center justify-center flex-wrap gap-2 p-2">
+              <span class="text-2xl animate-bounce">⭐</span>
+              <span class="text-xl animate-pulse">✨</span>
+              <span class="text-3xl animate-glow-star">🌟</span>
+              <span class="text-lg animate-bounce" style="animation-delay: 0.3s">⭐</span>
+              <span class="text-2xl animate-pulse" style="animation-delay: 0.5s">✨</span>
+              <span class="text-xl animate-glow-star" style="animation-delay: 0.2s">🌟</span>
+              <span class="text-2xl animate-bounce" style="animation-delay: 0.7s">⭐</span>
+            </div>
+
+            <!-- Jar Label -->
+            <div class="bg-amber-100/90 border border-amber-300 px-4 py-1.5 rounded-full shadow-sm mb-2">
+              <span class="font-romantic text-lg sm:text-xl text-amber-900 font-bold">100 Reasons For You</span>
+            </div>
+          </div>
+        </div>
+
+        <button onclick="pullStarFromJar()" class="mt-4 px-8 py-3 rounded-full bg-gradient-to-r from-amber-500 to-rose-500 text-white font-bold text-sm shadow-xl hover:from-amber-600 hover:to-rose-600 transition transform active:scale-95 cursor-pointer">
+          ✨ Pull Out A Glowing Star!
+        </button>
+
+        <!-- Unfolded Star Reason Display -->
+        <div id="starReasonCard" class="mt-5 p-5 bg-gradient-to-r from-amber-50/90 via-rose-50/90 to-amber-50/90 border-2 border-amber-300 rounded-2xl max-w-md mx-auto shadow-sm hidden">
+          <div class="flex items-center justify-center space-x-1.5 text-amber-600 font-bold text-xs uppercase tracking-wider mb-1">
+            <span>⭐</span>
+            <span id="starReasonNumber">Star #1</span>
+            <span>⭐</span>
+          </div>
+          <p id="starReasonText" class="font-handwritten text-2xl sm:text-3xl text-stone-800 leading-relaxed"></p>
+        </div>
+
+        <div class="flex items-center justify-between pt-8 border-t border-pink-100 mt-6">
+          <button onclick="goToScene(7)" class="px-5 py-2.5 rounded-2xl bg-white/70 hover:bg-white text-stone-600 text-xs font-semibold border border-pink-200 transition cursor-pointer">
+            ← "Open When..."
+          </button>
+          <button onclick="goToScene(9)" class="px-7 py-2.5 rounded-2xl bg-gradient-to-r from-pink-500 to-rose-600 text-white text-xs font-semibold shadow-md hover:from-pink-600 hover:to-rose-700 transition cursor-pointer">
+            Our Bucket List 🗺️ →
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= SCENE 9: FUTURE BUCKET LIST ================= -->
+    <section id="scene-9" class="scene-fade-in hidden w-full">
+      <div class="glass-box rounded-3xl p-5 sm:p-9 shadow-2xl">
+        <div class="flex flex-col sm:flex-row items-center justify-between border-b border-pink-100 pb-4 mb-6 gap-2">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-widest text-pink-600 bg-pink-100 px-3 py-1 rounded-full border border-pink-200">
+              Scene 9 • Our Future Adventures 🗺️
+            </span>
+            <h2 class="font-serif text-2xl sm:text-3xl text-plum font-bold mt-1">Our Couple Bucket List</h2>
+          </div>
+          <button onclick="openAddBucketItemModal()" class="text-xs bg-pink-600 hover:bg-pink-700 text-white px-4 py-2 rounded-full font-semibold shadow transition cursor-pointer">
+            ➕ Add Our Dream
+          </button>
+        </div>
+
+        <p class="text-xs sm:text-sm text-stone-600 mb-4">
+          Check off the ones you can't wait for us to do together! All checked dreams get sent directly in our WhatsApp message:
+        </p>
+
+        <!-- Checklist -->
+        <div id="bucketListContainer" class="space-y-3 mb-6">
+          <!-- Populated by JavaScript -->
+        </div>
+
+        <div class="flex items-center justify-between pt-6 border-t border-pink-100">
+          <button onclick="goToScene(8)" class="px-5 py-2.5 rounded-2xl bg-white/70 hover:bg-white text-stone-600 text-xs font-semibold border border-pink-200 transition cursor-pointer">
+            ← Star Jar
+          </button>
+          <button onclick="goToScene(10)" class="px-7 py-2.5 rounded-2xl bg-gradient-to-r from-pink-500 to-rose-600 text-white text-xs font-semibold shadow-md hover:from-pink-600 hover:to-rose-700 transition cursor-pointer">
+            Retro Vinyl 🎵 →
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= SCENE 10: RETRO VINYL PLAYER ================= -->
+    <section id="scene-10" class="scene-fade-in hidden w-full text-center">
+      <div class="glass-box rounded-3xl p-6 sm:p-10 shadow-2xl relative overflow-hidden">
+        <div class="max-w-xl mx-auto mb-6">
+          <span class="text-xs font-bold uppercase tracking-widest text-indigo-700 bg-indigo-100 px-3.5 py-1 rounded-full border border-indigo-200">
+            Scene 10 • Nte rajakumarikkkk oru kujji song 🎵
+          </span>
+          <h2 class="font-serif text-2xl sm:text-4xl text-plum font-bold mt-2">
+            The Vintage Vinyl Player
+          </h2>
+          <p class="text-xs sm:text-sm text-stone-600 mt-1">
+            Drop the needle on our relationship's soundtrack. Smooth gentle lo-fi synth notes programmed to play softly in your browser!
+          </p>
+        </div>
+
+        <!-- Vinyl Turntable UI -->
+        <div class="relative bg-gradient-to-br from-stone-900 to-stone-800 rounded-3xl p-6 sm:p-8 max-w-lg mx-auto shadow-2xl border-4 border-stone-700 text-white mb-6">
+          <div class="flex flex-col sm:flex-row items-center justify-between gap-6">
+            
+            <!-- Spinning Vinyl Record -->
+            <div class="relative w-48 h-48 sm:w-56 sm:h-56 flex items-center justify-center">
+              <div id="vinylDisc" class="vinyl-disc vinyl-grooves w-full h-full rounded-full border-4 border-stone-700 flex items-center justify-center transition-transform">
+                <!-- Center label -->
+                <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-gradient-to-tr from-pink-500 to-rose-600 flex flex-col items-center justify-center text-white border-2 border-stone-900 shadow">
+                  <span class="text-[9px] font-mono tracking-widest">SIDE A</span>
+                  <span class="text-xs font-bold">15•10•26</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Turntable Details & Track Info -->
+            <div class="text-left flex-1 space-y-3">
+              <div>
+                <span class="text-[10px] font-mono text-pink-400 uppercase tracking-widest">Now Spinning</span>
+                <h4 id="vinylTrackTitle" class="font-serif text-lg font-bold text-white">Track 1: "Aadyam Thammil"</h4>
+                <p id="vinylTrackDesc" class="text-xs text-stone-300 font-light mt-0.5">The soothing melody of the day we first fell in love.</p>
+              </div>
+
+              <!-- Controls -->
+              <div class="flex items-center space-x-3 pt-2">
+                <button onclick="prevVinylTrack()" class="w-9 h-9 rounded-full bg-stone-700 hover:bg-stone-600 text-white flex items-center justify-center text-xs">⏮</button>
+                <button onclick="toggleVinylPlay()" id="vinylPlayBtn" class="px-5 py-2 rounded-full bg-pink-600 hover:bg-pink-500 font-bold text-xs shadow-md flex items-center space-x-1 cursor-pointer">
+                  <span id="vinylPlayIcon">▶</span>
+                  <span id="vinylPlayText">Play</span>
+                </button>
+                <button onclick="nextVinylTrack()" class="w-9 h-9 rounded-full bg-stone-700 hover:bg-stone-600 text-white flex items-center justify-center text-xs">⏭</button>
+              </div>
+
+              <div class="pt-2 text-[10px] font-mono text-stone-400">
+                Speed: 33 ⅓ RPM • Pure Web Audio Synthesizer
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="flex items-center justify-between pt-6 border-t border-pink-100">
+          <button onclick="goToScene(9)" class="px-5 py-2.5 rounded-2xl bg-white/70 hover:bg-white text-stone-600 text-xs font-semibold border border-pink-200 transition cursor-pointer">
+            ← Bucket List
+          </button>
+          <button onclick="goToScene(11)" class="px-7 py-2.5 rounded-2xl bg-gradient-to-r from-pink-500 to-rose-600 text-white text-xs font-semibold shadow-md hover:from-pink-600 hover:to-rose-700 transition cursor-pointer">
+            Love Coupons 🎟️ →
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= SCENE 11: LOVE COUPONS & MINIGAME ================= -->
+    <section id="scene-11" class="scene-fade-in hidden w-full">
+      <div class="glass-box rounded-3xl p-5 sm:p-8 shadow-2xl">
+        <div class="text-center max-w-xl mx-auto mb-6">
+          <span class="text-xs font-bold uppercase tracking-widest text-pink-600 bg-pink-100 px-3 py-1 rounded-full">
+            Scene 11 • Birthday Perks
+          </span>
+          <h2 class="font-serif text-2xl sm:text-4xl text-plum font-bold mt-2">Unlock Your Love Coupons 🎟️</h2>
+          <p class="text-xs sm:text-sm text-stone-600 mt-1">
+            Tap each mystery pass to scratch and claim your exclusive, lifetime-valid girlfriend vouchers!
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
+          <div id="coupon-1" onclick="redeemCoupon(1, 'Unlimited kissess for my fav personnn💋😩')" class="cursor-pointer bg-gradient-to-br from-pink-50 to-rose-50 border-2 border-dashed border-pink-300 rounded-2xl p-5 text-center relative overflow-hidden transition transform hover:-translate-y-1">
+            <span class="text-3xl block mb-2">🎁</span>
+            <div id="couponStatus1" class="text-xs font-bold text-pink-600 uppercase tracking-wider mb-1">Coupon #01</div>
+            <p id="couponTitle1" class="text-sm font-semibold text-stone-700">Tap to Reveal Secret Pass</p>
+            <div class="mt-3 text-[10px] text-pink-800 bg-pink-100 py-1 px-2 rounded-full inline-block">No Expiry Date</div>
+          </div>
+
+          <div id="coupon-2" onclick="redeemCoupon(2, 'One full ice cream date with mwhhhh! 🍦🚗')" class="cursor-pointer bg-gradient-to-br from-pink-50 to-rose-50 border-2 border-dashed border-pink-300 rounded-2xl p-5 text-center relative overflow-hidden transition transform hover:-translate-y-1">
+            <span class="text-3xl block mb-2">🍨</span>
+            <div id="couponStatus2" class="text-xs font-bold text-pink-600 uppercase tracking-wider mb-1">Coupon #02</div>
+            <p id="couponTitle2" class="text-sm font-semibold text-stone-700">Tap to Reveal Secret Pass</p>
+            <div class="mt-3 text-[10px] text-pink-800 bg-pink-100 py-1 px-2 rounded-full inline-block">100% On-Demand</div>
+          </div>
+
+          <div id="coupon-3" onclick="redeemCoupon(3, 'kujji pavammm Boyfriend who is full of green forest 👑😂')" class="cursor-pointer bg-gradient-to-br from-pink-50 to-rose-50 border-2 border-dashed border-pink-300 rounded-2xl p-5 text-center relative overflow-hidden transition transform hover:-translate-y-1">
+            <span class="text-3xl block mb-2">👑</span>
+            <div id="couponStatus3" class="text-xs font-bold text-pink-600 uppercase tracking-wider mb-1">Coupon #03</div>
+            <p id="couponTitle3" class="text-sm font-semibold text-stone-700">Tap to Reveal Secret Pass</p>
+            <div class="mt-3 text-[10px] text-pink-800 bg-pink-100 py-1 px-2 rounded-full inline-block">Royal Immunity</div>
+          </div>
+        </div>
+
+        <div class="bg-white/70 border border-pink-200 rounded-2xl p-4 sm:p-5 text-center">
+          <div class="flex flex-col sm:flex-row items-center justify-between gap-3">
+            <div class="text-left">
+              <h4 class="font-bold text-plum text-sm sm:text-base">Feeling competitive? Send Me Sweet Hearts 💖</h4>
+              <p class="text-xs text-stone-500">Tap the heart button as many times as you can to load kisses!</p>
+            </div>
+            <div>
+              <button id="tapHeartBtn" onclick="tapLoveCounter()" class="px-5 py-2.5 rounded-full bg-pink-500 hover:bg-pink-600 text-white font-bold text-sm shadow-md transition transform active:scale-90 cursor-pointer">
+                Tap Me! ❤️ <span id="heartCountBadge" class="ml-1 bg-white text-pink-600 px-2 py-0.5 rounded-full text-xs">0</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex items-center justify-between pt-6 border-t border-pink-100 mt-6">
+          <button onclick="goToScene(10)" class="px-5 py-2.5 rounded-2xl bg-white/70 hover:bg-white text-stone-600 text-xs font-semibold border border-pink-200 transition cursor-pointer">
+            ← Retro Vinyl
+          </button>
+          <button onclick="goToScene(12)" class="px-7 py-2.5 rounded-2xl bg-gradient-to-r from-pink-500 to-rose-600 text-white text-xs font-semibold shadow-md hover:from-pink-600 hover:to-rose-700 transition cursor-pointer">
+            Birthday Cake 🎂 →
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= SCENE 12: BIRTHDAY CAKE & BLOWABLE CANDLE ================= -->
+    <section id="scene-12" class="scene-fade-in hidden w-full">
+      <div class="glass-box rounded-3xl p-6 sm:p-10 text-center shadow-2xl relative overflow-hidden">
+        <div class="max-w-md mx-auto mb-6">
+          <span class="text-xs font-bold uppercase tracking-widest text-pink-600 bg-pink-100 px-3 py-1 rounded-full">
+            Scene 12 • The Birthday Wish
+          </span>
+          <h2 class="font-serif text-3xl sm:text-4xl text-plum font-bold mt-2">Blow The Candle, My RAJAKUMARIIIIIII 🎂</h2>
+          <p class="text-xs sm:text-sm text-stone-600 mt-1">
+            Make a silent wish from the bottom of your sweet heart and blow out the flickering flame!
+          </p>
+        </div>
+
+        <!-- 3D Layer Cake -->
+        <div class="relative w-56 h-52 mx-auto mb-6 flex flex-col items-center justify-end">
+          <div class="relative flex flex-col items-center mb-1 cursor-pointer" onclick="blowCandle()" title="Click to blow out!">
+            <div id="interactiveFlame" class="candle-flame"></div>
+            <div class="w-1 h-3 bg-stone-700"></div>
+            <div class="w-4 h-16 bg-gradient-to-r from-pink-200 via-rose-100 to-pink-300 rounded-t-md shadow-sm border border-pink-300 flex flex-col justify-around py-1">
+              <span class="w-full h-0.5 bg-rose-400/50"></span>
+              <span class="w-full h-0.5 bg-rose-400/50"></span>
+              <span class="w-full h-0.5 bg-rose-400/50"></span>
+            </div>
+          </div>
+
+          <div class="relative w-40 h-14 bg-gradient-to-r from-pink-400 via-rose-300 to-pink-400 rounded-t-3xl shadow-md border-t-4 border-white flex items-center justify-center">
+            <div class="absolute -bottom-1 inset-x-0 flex justify-around">
+              <span class="w-3 h-3 bg-white rounded-full"></span>
+              <span class="w-3 h-3.5 bg-white rounded-full"></span>
+              <span class="w-3 h-3 bg-white rounded-full"></span>
+              <span class="w-3 h-4 bg-white rounded-full"></span>
+              <span class="w-3 h-3 bg-white rounded-full"></span>
+            </div>
+            <span class="font-romantic text-2xl text-white drop-shadow">Happy Birthday</span>
+          </div>
+
+          <div class="relative w-52 h-16 bg-gradient-to-r from-rose-500 via-pink-500 to-rose-600 rounded-b-3xl shadow-xl flex items-center justify-center border-t-2 border-rose-300">
+            <span class="text-xs tracking-widest uppercase font-bold text-pink-100">15 October 2026</span>
+          </div>
+
+          <div class="w-64 h-3.5 bg-white/95 rounded-full shadow-lg mt-1 border border-pink-100"></div>
+        </div>
+
+        <button id="blowCandleBtn" onclick="blowCandle()" class="inline-flex items-center space-x-2 bg-gradient-to-r from-pink-500 to-rose-600 hover:from-pink-600 hover:to-rose-700 text-white font-semibold text-sm px-8 py-3 rounded-full shadow-xl transform active:scale-95 transition cursor-pointer">
+          <span id="cakeBtnIcon">💨</span>
+          <span id="cakeBtnText">Blow Out The Candle</span>
+        </button>
+
+        <div id="wishBanner" class="hidden mt-4 p-3 bg-pink-100/80 rounded-2xl border border-pink-200 text-pink-900 text-xs sm:text-sm font-medium animate-pulse">
+          ✨ Your wish was whispered into the universe! May every second of 2026 bring you endless smiles! ✨
+        </div>
+
+        <div class="flex items-center justify-between pt-8 border-t border-pink-100 mt-8">
+          <button onclick="goToScene(11)" class="px-5 py-2.5 rounded-2xl bg-white/70 hover:bg-white text-stone-600 text-xs font-semibold border border-pink-200 transition cursor-pointer">
+            ← Fun Coupons
+          </button>
+          <button onclick="goToScene(13)" class="px-7 py-2.5 rounded-2xl bg-gradient-to-r from-pink-500 to-rose-600 text-white text-xs font-semibold shadow-md hover:from-pink-600 hover:to-rose-700 transition cursor-pointer">
+            Answer Our Sweet Quiz 💌 →
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= SCENE 13: RELATIONSHIP LOVE QUIZ ================= -->
+    <section id="scene-13" class="scene-fade-in hidden w-full">
+      <div class="glass-box rounded-3xl p-5 sm:p-9 shadow-2xl">
+        <div class="flex items-center justify-between border-b border-pink-100 pb-4 mb-6">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-widest text-pink-600 bg-pink-100 px-3 py-1 rounded-full">
+              Scene 13 • The Love Quiz
+            </span>
+            <h2 class="font-serif text-xl sm:text-3xl text-plum font-bold mt-1">Questions For You, Sweetheart 💌</h2>
+          </div>
+          <div class="text-xs font-bold text-pink-700 bg-pink-100 px-3 py-1.5 rounded-full">
+            Sends to WhatsApp!
+          </div>
+        </div>
+
+        <form id="loveQuizForm" onsubmit="event.preventDefault(); goToScene(14);" class="space-y-5">
+          <div class="bg-white/80 p-4 rounded-2xl border border-pink-200">
+            <label class="block text-xs sm:text-sm font-bold text-stone-800 mb-1">
+              1. What is your single most cherished memory of us? 🌟
+            </label>
+            <input type="text" id="ans_memory" placeholder="Type that beautiful moment here..." value="The day we spent hours talking and forgot about time completely" class="w-full text-xs sm:text-sm p-3 rounded-xl bg-pink-50/50 border border-pink-200 focus:outline-none focus:ring-2 focus:ring-pink-400 transition">
+          </div>
+
+          <div class="bg-white/80 p-4 rounded-2xl border border-pink-200">
+            <label class="block text-xs sm:text-sm font-bold text-stone-800 mb-1">
+              2. Dahhh nee sherikkummm ente koode comfortable anooooo🥹❓
+            </label>
+            <input type="text" id="ans_song" placeholder="Our song..." value="Perfect - Ed Sheeran" class="w-full text-xs sm:text-sm p-3 rounded-xl bg-pink-50/50 border border-pink-200 focus:outline-none focus:ring-2 focus:ring-pink-400 transition">
+          </div>
+
+          <div class="bg-white/80 p-4 rounded-2xl border border-pink-200">
+            <div class="flex justify-between items-center mb-1">
+              <label class="text-xs sm:text-sm font-bold text-stone-800">
+                3. How much do you love me right now?🙈🤭
+              </label>
+              <span id="loveSliderValue" class="text-xs font-bold text-pink-600 bg-pink-100 px-2 py-0.5 rounded-full">3000% & to the moon!</span>
+            </div>
+            <input type="range" id="ans_love_level" min="100" max="3000" step="100" value="3000" oninput="updateLoveSlider(this.value)" class="w-full accent-pink-500 h-2 bg-pink-100 rounded-lg cursor-pointer">
+            <div class="flex justify-between text-[10px] text-stone-400 mt-1">
+              <span>100% (A lot)</span>
+              <span>1500% (Huge)</span>
+              <span>3000% (To Infinity!)</span>
+            </div>
+          </div>
+
+          <div class="bg-white/80 p-4 rounded-2xl border border-pink-200">
+            <label class="block text-xs sm:text-sm font-bold text-stone-800 mb-1">
+              4. ente ettommm nalllla oru quality and bad quality?👀
+            </label>
+            <input type="text" id="ans_promise" placeholder="e.g. Always give me warm hugs..." value="Never stay mad at me for more than 5 minutes and always give me sweet kisses" class="w-full text-xs sm:text-sm p-3 rounded-xl bg-pink-50/50 border border-pink-200 focus:outline-none focus:ring-2 focus:ring-pink-400 transition">
+          </div>
+
+          <div class="bg-white/80 p-4 rounded-2xl border border-pink-200">
+            <label class="block text-xs sm:text-sm font-bold text-stone-800 mb-1">
+              5. Sherikkummm ente eethu name vilikkana ishtttamm?👀
+            </label>
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs">
+              <label class="flex items-center space-x-1.5 p-2 rounded-xl bg-pink-50 border border-pink-200 cursor-pointer">
+                <input type="radio" name="ans_date" value="Cozy Candlelight Dinner" checked class="accent-pink-600">
+                <span>Safvan🤭👀 </span>
+              </label>
+              <label class="flex items-center space-x-1.5 p-2 rounded-xl bg-pink-50 border border-pink-200 cursor-pointer">
+                <input type="radio" name="ans_date" value="Beach Sunset & Stargazing" class="accent-pink-600">
+                <span>bharthavvvvv🙈💋</span>
+              </label>
+              <label class="flex items-center space-x-1.5 p-2 rounded-xl bg-pink-50 border border-pink-200 cursor-pointer">
+                <input type="radio" name="ans_date" value="Amusement Park & Treats" class="accent-pink-600">
+                <span>Chimbanzeee🥹🫶</span>
+              </label>
+              <label class="flex items-center space-x-1.5 p-2 rounded-xl bg-pink-50 border border-pink-200 cursor-pointer">
+                <input type="radio" name="ans_date" value="Blanket Fort & Movie Night" class="accent-pink-600">
+                <span>Sachuuuu😽</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="flex items-center justify-between pt-4 border-t border-pink-100">
+            <button type="button" onclick="goToScene(12)" class="px-5 py-2.5 rounded-2xl bg-white/70 hover:bg-white text-stone-600 text-xs font-semibold border border-pink-200 transition cursor-pointer">
+              ← Birthday Cake
+            </button>
+            <button type="submit" class="px-7 py-2.5 rounded-2xl bg-gradient-to-r from-pink-500 to-rose-600 text-white text-xs font-semibold shadow-md hover:from-pink-600 hover:to-rose-700 transition cursor-pointer">
+              Review & WhatsApp 📲 →
+            </button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- ================= SCENE 14: SEND ANSWERS ON WHATSAPP ================= -->
+    <section id="scene-14" class="scene-fade-in hidden w-full">
+      <div class="glass-box rounded-3xl p-6 sm:p-10 text-center shadow-2xl relative">
+        <div class="w-16 h-16 mx-auto bg-gradient-to-tr from-pink-500 to-rose-500 text-white rounded-full flex items-center justify-center text-3xl shadow-lg mb-4">
+          💌
+        </div>
+
+        <span class="text-xs font-bold uppercase tracking-widest text-pink-600 bg-pink-100 px-3 py-1 rounded-full">
+          Final Scene • Delivered To WhatsApp
+        </span>
+        <h2 class="font-serif text-2xl sm:text-4xl text-plum font-bold mt-2">Ready To Send To Your Chimbanzeee! 💖</h2>
+        <p class="text-xs sm:text-sm text-stone-600 mt-1 max-w-md mx-auto">
+          All your quiz answers, claimed perks, star wishes, and couple bucket list dreams are neatly packed into a WhatsApp message. Tap below to send!
+        </p>
+
+        <!-- Current Target Phone Setting Display -->
+        <div class="max-w-md mx-auto mt-4 p-3 bg-white/80 rounded-2xl border border-pink-200 flex items-center justify-between text-xs">
+          <div class="text-left">
+            <span class="text-stone-400 text-[10px] block">Sending to Chimbazzzzz's Number:</span>
+            <span id="currentPhoneDisplay" class="font-bold text-stone-700">+919656320417</span>
+          </div>
+          <button onclick="openPhoneModal()" class="text-pink-600 hover:text-pink-800 font-semibold underline text-xs cursor-pointer">
+            Change Number
+          </button>
+        </div>
+
+        <!-- Formatted Message Preview -->
+        <div class="mt-4 p-4 rounded-2xl bg-white/90 border border-pink-200 text-left max-h-56 overflow-y-auto shadow-inner text-xs text-stone-700 leading-relaxed">
+          <div class="flex justify-between items-center mb-2 pb-1 border-b border-pink-100 font-sans">
+            <span class="font-bold text-pink-700 text-xs">Formatted Message Preview:</span>
+            <button onclick="copyToClipboard()" class="text-[11px] bg-pink-100 hover:bg-pink-200 text-pink-800 px-2 py-0.5 rounded-lg transition cursor-pointer">
+              Copy Text 📋
+            </button>
+          </div>
+          <pre id="whatsappMessagePreview" class="whitespace-pre-wrap font-sans text-xs"></pre>
+        </div>
+
+        <!-- WhatsApp Action Button -->
+        <div class="mt-6 flex flex-col sm:flex-row gap-3 justify-center">
+          <button onclick="sendViaWhatsApp()" class="w-full sm:w-auto inline-flex items-center justify-center space-x-2.5 px-8 py-3.5 rounded-full bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-sm tracking-wide shadow-xl hover:shadow-emerald-200 transition transform active:scale-95 cursor-pointer">
+            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+              <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+            </svg>
+            <span>Send Answers on WhatsApp ✨</span>
+          </button>
+        </div>
+
+        <div class="mt-8 pt-4 border-t border-pink-100 flex justify-between items-center text-xs">
+          <button onclick="goToScene(13)" class="text-stone-500 hover:text-stone-700 cursor-pointer">
+            ← Edit Quiz
+          </button>
+          <button onclick="goToScene(1)" class="text-pink-600 hover:text-pink-800 font-semibold cursor-pointer">
+            Replay Intro ↺
+          </button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ================= MODALS & OVERLAYS ================= -->
+
+  <!-- Open When Letter Modal -->
+  <div id="openWhenModal" class="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 hidden">
+    <div class="love-letter-stationery max-w-lg w-full rounded-3xl p-6 sm:p-9 shadow-2xl relative border-4 border-rose-300 transform scale-95 transition-all">
+      <div class="flex items-center justify-between border-b-2 border-rose-200 pb-3 mb-4">
+        <div class="flex items-center space-x-2">
+          <span class="text-2xl">💌</span>
+          <h4 id="openWhenTitle" class="font-serif text-lg font-bold text-rose-950">Letter Title</h4>
+        </div>
+        <button onclick="closeOpenWhenModal()" class="text-rose-900 bg-rose-100 hover:bg-rose-200 w-8 h-8 rounded-full flex items-center justify-center font-bold">✕</button>
+      </div>
+
+      <div class="my-4 min-h-[140px] flex items-center">
+        <p id="openWhenContent" class="font-handwritten text-2xl sm:text-3xl text-stone-800 leading-relaxed"></p>
+      </div>
+
+      <div class="pt-4 border-t-2 border-rose-200 flex items-center justify-between">
+        <span class="font-romantic text-xl text-rose-800">I am always right here beside you ❤️</span>
+        <button onclick="closeOpenWhenModal()" class="bg-rose-600 text-white px-4 py-1.5 rounded-full font-semibold hover:bg-rose-700 text-xs transition">Fold Away 💌</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add Bucket List Item Modal -->
+  <div id="addBucketModal" class="fixed inset-0 z-50 bg-black/40 backdrop-blur-sm flex items-center justify-center p-4 hidden">
+    <div class="glass-box rounded-3xl p-6 max-w-sm w-full shadow-2xl border border-pink-200">
+      <h3 class="font-serif text-lg font-bold text-plum mb-1">Add A Couple Dream 🗺️</h3>
+      <p class="text-xs text-stone-600 mb-3">What is something special you want us to do together?</p>
+      
+      <input type="text" id="newBucketInput" placeholder="e.g. Visit Paris and share a hot chocolate..." class="w-full text-xs p-3 rounded-xl bg-white border border-pink-200 mb-4 focus:ring-2 focus:ring-pink-400 focus:outline-none">
+
+      <div class="flex justify-end space-x-2">
+        <button onclick="closeAddBucketModal()" class="px-4 py-2 text-xs font-semibold text-stone-600 hover:bg-pink-100 rounded-xl transition">Cancel</button>
+        <button onclick="saveNewBucketItem()" class="px-5 py-2 text-xs font-semibold bg-pink-600 text-white rounded-xl shadow transition">Add To List ✨</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Live Edit Letter Modal -->
+  <div id="editLetterModal" class="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 hidden">
+    <div class="glass-box rounded-3xl p-6 sm:p-8 max-w-lg w-full shadow-2xl border border-amber-300">
+      <div class="flex items-center justify-between border-b border-amber-200 pb-2 mb-4">
+        <h3 class="font-serif text-lg font-bold text-amber-950">Personalize Your Love Letter ✍️</h3>
+        <button onclick="closeEditLetterModal()" class="text-stone-400 hover:text-stone-600">✕</button>
+      </div>
+
+      <label class="text-[11px] font-bold text-stone-700 block mb-1">Salutation / Her Nickname:</label>
+      <input type="text" id="inputLetterSalutation" placeholder="My Sweetest Angel," class="w-full text-xs p-2.5 rounded-xl bg-white border border-amber-200 mb-3 focus:outline-none focus:ring-2 focus:ring-amber-400">
+
+      <label class="text-[11px] font-bold text-stone-700 block mb-1">Your Letter Words (Paragraphs):</label>
+      <textarea id="inputLetterBody" rows="7" placeholder="Write your heartfelt letter here..." class="w-full text-xs p-2.5 rounded-xl bg-white border border-amber-200 mb-3 focus:outline-none focus:ring-2 focus:ring-amber-400"></textarea>
+
+      <div class="grid grid-cols-2 gap-2 mb-4">
+        <div>
+          <label class="text-[11px] font-bold text-stone-700 block mb-1">Sign-off:</label>
+          <input type="text" id="inputLetterSignoff" placeholder="Forever & always yours," class="w-full text-xs p-2 rounded-xl bg-white border border-amber-200">
+        </div>
+        <div>
+          <label class="text-[11px] font-bold text-stone-700 block mb-1">Your Name / Pet-name:</label>
+          <input type="text" id="inputLetterSender" placeholder="Your Boyfriend ❤️" class="w-full text-xs p-2 rounded-xl bg-white border border-amber-200">
+        </div>
+      </div>
+
+      <div class="flex justify-end space-x-2">
+        <button onclick="closeEditLetterModal()" class="px-4 py-2 text-xs font-semibold text-stone-600 hover:bg-amber-100 rounded-xl transition">Cancel</button>
+        <button onclick="saveCustomLetter()" class="px-5 py-2 text-xs font-semibold bg-gradient-to-r from-amber-600 to-rose-600 text-white rounded-xl shadow-md transition">Save & Update Letter ✨</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Target Phone Config Modal -->
+  <div id="phoneModal" class="fixed inset-0 z-50 bg-black/40 backdrop-blur-sm flex items-center justify-center p-4 hidden">
+    <div class="glass-box rounded-3xl p-6 max-w-sm w-full shadow-2xl">
+      <h3 class="font-serif text-lg font-bold text-plum mb-2">Set WhatsApp Number</h3>
+      <p class="text-xs text-stone-600 mb-4">
+        Enter the phone number where you want her answers to be sent (including country code, e.g. +919876543210):
+      </p>
+      <input type="text" id="phoneInput" placeholder="+919876543210" value="+919876543210" class="w-full text-sm p-3 rounded-xl bg-white border border-pink-200 focus:outline-none focus:ring-2 focus:ring-pink-400 mb-4">
+      <div class="flex justify-end space-x-2">
+        <button onclick="closePhoneModal()" class="px-4 py-2 text-xs font-semibold text-stone-600 hover:bg-pink-100 rounded-xl transition">Cancel</button>
+        <button onclick="savePhoneNumber()" class="px-5 py-2 text-xs font-semibold bg-pink-600 hover:bg-pink-700 text-white rounded-xl shadow-md transition">Save Number</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-24 opacity-0 transition-all duration-300 bg-plum text-white px-5 py-3 rounded-2xl shadow-2xl text-xs flex items-center space-x-2 border border-pink-400/40">
+    <span id="toastIcon">✨</span>
+    <span id="toastText">Surprise unlocked!</span>
+  </div>
+
+  <!-- External JavaScript -->
+  <script src="script.js"></script>
+</body>
+</html>
