@@ -721,10 +721,10 @@ function buildWhatsAppMessage() {
          `💋 *"everything depended on mwhhhh🙈💋"*\n` +
          `✨ Kisses Blasted: ${mwhhhTaps} times!\n\n` +
          `🌟 *1. Most Cherished Memory:*\n"${memory}"\n\n` +
-         `🎶 *2. Our Special Song:*\n${song}\n\n` +
+         `🎶 *2. Dahhh nee ente kooodee sherikkumm cofort annnoooo?:*\n${song}\n\n` +
          `💘 *3. How Much I Love You:*\n${loveLevel}% (To infinity and beyond!)\n\n` +
-         `🤞 *4. A Promise I Want You To Keep:*\n"${promise}"\n\n` +
-         `🏖️ *5. Next Dream Date Chosen:*\n${dateOption}\n\n` +
+         `🤞 *4. Ente ettomm nalla oru qualityy?:*\n"${promise}"\n\n` +
+         `🏖️ *5. Sherikkummm ennne enth vilikkunnneya ishttammm ?:*\n${dateOption}\n\n` +
          `🗺️ *Our Couple Bucket List Checked:*\n${checkedDreams || '  • All of them!'}\n\n` +
          `⭐ *Star Jar Reasons Pulled:* ${starPullCounter} sweet reasons read!\n` +
          `📜 *Handwritten Love Letter Read:* "Yes, I read your letter on parchment and it made my heart melt! 🥺❤️"\n` +
